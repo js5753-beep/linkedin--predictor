@@ -2,9 +2,9 @@
 # Ndalo Bantubahle Mukoki
 # Run with:  streamlit run app.py
 
-from pdb import run
 
-from flask import app
+from pathlib import Path
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -23,7 +23,7 @@ def clean_sm(x):
 
 @st.cache_resource
 def train_model():
-    s = pd.read_csv("social_media_usage.csv")
+    s = pd.read_csv(Path(__file__).parent / "social_media_usage.csv")
 
     ss = pd.DataFrame({
         "sm_li":     clean_sm(s["web1h"]),
